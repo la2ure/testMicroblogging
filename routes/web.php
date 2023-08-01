@@ -14,8 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Affichage du formulaire de réinitialisation du mot de passe
+Route::get('/forgot-password', [App\Http\Controllers\Auth\PasswordResetLinkController::class, 'create'])->name('password.create');
+
+// Traitement de la demande de réinitialisation du mot de passe
+Route::post('/forgot-password', [App\Http\Controllers\Auth\PasswordResetLinkController::class, 'store'])->name('password.store');
+
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/blog', function () {
+    return 'welcome';
 });
 
 Route::get('/dashboard', function () {
