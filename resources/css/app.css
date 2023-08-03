@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.backr-color-icon {
+  background-color: #FFAB00;
+}
+
+.border-icon {
+  border-radius: 50%;
+}
