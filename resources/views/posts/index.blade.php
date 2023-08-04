@@ -1,47 +1,46 @@
-@extends("layouts.app")
-@section("title", "Tous les articles")
-@section("content")
-
-	<h1>Tous les articles</h1>
-
-	<p>
-		<!-- Lien pour créer un nouvel article : "posts.create" -->
-		<a href="{{ route('posts.create') }}" title="Créer un article" >Créer un nouveau post</a>
-	</p>
-
-	<!-- Le tableau pour lister les articles/posts -->
-	<table border="1" >
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th colspan="2" >Opérations</th>
-			</tr>
-		</thead>
-		<tbody>
-			<!-- On parcourt la collection de Post -->
-			@foreach ($posts as $post)
-			<tr>
-				<td>
-					<!-- Lien pour afficher un Post : "posts.show" -->
-					<a href="{{ route('posts.show', $post) }}" title="Lire l'article" >{{ $post->title }}</a>
-				</td>
-				<td>
-					<!-- Lien pour modifier un Post : "posts.edit" -->
-					<a href="{{ route('posts.edit', $post) }}" title="Modifier l'article" >Modifier</a>
-				</td>
-				<td>
-					<!-- Formulaire pour supprimer un Post : "posts.destroy" -->
-					<form method="POST" action="{{ route('posts.destroy', $post) }}" >
-						<!-- CSRF token -->
-						@csrf
-						<!-- <input type="hidden" name="_method" value="DELETE"> -->
-						@method("DELETE")
-						<input type="submit" value="x Supprimer" >
-					</form>
-				</td>
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
-	
+@extends('posts.layout')
+ 
+@section('content')
+    <div class="row" style="margin-top: 5rem;">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Laravel 8 CRUD Example from scratch - laravelcode.com</h2>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ route('posts.create') }}"> Create New Post</a>
+            </div>
+        </div>
+    </div>
+   
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+   
+    <table class="table table-bordered">
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Details</th>
+            <th width="280px">Action</th>
+        </tr>
+        @foreach ($data as $key => $value)
+        <tr>
+            <td>{{ ++$i }}</td>
+            <td>{{ $value->title }}</td>
+            <td>{{ \Str::limit($value->description, 100) }}</td>
+            <td>
+                <form action="{{ route('posts.destroy',$value->id) }}" method="POST">   
+                    <a class="btn btn-info" href="{{ route('posts.show',$value->id) }}">Show</a>    
+                    <a class="btn btn-primary" href="{{ route('posts.edit',$value->id) }}">Edit</a>   
+                    @csrf
+                    @method('DELETE')      
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </table>  
+    {!! $data->links() !!}      
 @endsection

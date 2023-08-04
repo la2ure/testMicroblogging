@@ -18,6 +18,8 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [HomeController::class, 'homepage']);
 
+Route::resource('posts', PostController::class);
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

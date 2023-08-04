@@ -1,45 +1,49 @@
-@extends("layouts.app")
-@section("title", "Créer un post")
-@section("content")
-
-	<h1>Créer un post</h1>
-
-	<!-- Le formulaire est géré par la route "posts.store" -->
-	<form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data" >
-
-		<!-- Le token CSRF -->
-		@csrf
-		
-		<p>
-			<label for="title" >Titre</label><br/>
-			<input type="text" name="title" value="{{ old('title') }}"  id="title" placeholder="Le titre du post" >
-
-			<!-- Le message d'erreur pour "title" -->
-			@error("title")
-			<div>{{ $message }}</div>
-			@enderror
-		</p>
-		<p>
-			<label for="picture" >Couverture</label><br/>
-			<input type="file" name="picture" id="picture" >
-
-			<!-- Le message d'erreur pour "picture" -->
-			@error("picture")
-			<div>{{ $message }}</div>
-			@enderror
-		</p>
-		<p>
-			<label for="content" >Contenu</label><br/>
-			<textarea name="content" id="content" lang="fr" rows="10" cols="50" placeholder="Le contenu du post" >{{ old('content') }}</textarea>
-
-			<!-- Le message d'erreur pour "content" -->
-			@error("content")
-			<div>{{ $message }}</div>
-			@enderror
-		</p>
-
-		<input type="submit" name="valider" value="Valider" >
-
-	</form>
-
+@extends('posts.layout')
+   
+@section('content')
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Edit Product</h2>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('posts.index') }}"> Back</a>
+            </div>
+        </div>
+    </div>
+   
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+  
+    <form action="{{ route('posts.update',$post->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+   
+         <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Title:</strong>
+                    <input type="text" name="title" value="{{ $post->title }}" class="form-control" placeholder="Title">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Description:</strong>
+                    <textarea class="form-control" style="height:150px" name="description" placeholder="Detail">{{ $post->description }}</textarea>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+   
+    </form>
 @endsection
