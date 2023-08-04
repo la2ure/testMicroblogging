@@ -8,7 +8,6 @@
   <title>Chikker</title>
 </head>
 <body>
-  <main>
     <div class="flex content-center">
       <div>
         <img class="rounded-r-full w-16"  src="{{ Vite::asset('public/images/logo.jpg') }}" alt="Logo">
@@ -27,13 +26,12 @@
         </button>
       </div>
     </div>
-    <div class="relative my-5 mx-5 content-center">
-      <!-- top navbar -->
-      <div class="sticky bottom-0 left-0 bg-white w-full py-2 px-3 mt-1 text-xs">
+    <div class="relative flex">
+      <div class="sticky content-center bottom-0 my-5 mx-5 left-0 bg-white w-full py-2 text-xs">
         
-        <div class="grid grid-cols-5 gap-0.5 mt-2 pb-5">
+        <div class="grid grid-cols-5 gap-0.5 mt-2 pb-3">
     
-            <div class="relative w-full h-60 bg-cover bg-center bg-no-repeat" style="background-image: url('https://sf-tk-sg.ibytedtos.com/obj/tiktok-web-sg/tt-sg-article-cover-351970d5103b996fbe9ddc67f6d668cc.gif');">
+            <div class="relative w-full h-full bg-cover bg-center bg-no-repeat" style="background-image: url('https://sf-tk-sg.ibytedtos.com/obj/tiktok-web-sg/tt-sg-article-cover-351970d5103b996fbe9ddc67f6d668cc.gif');">
                 <!-- small player with views -->
                 <div class="absolute bottom-1 left-1 flex gap-1 text-white text-xs items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -214,7 +212,6 @@
             </div>
         </div>
     </div>
-    @include('home.menuBottom')
-  </main>
+        @include('home.menuBottom')
 </body>
 </html>
