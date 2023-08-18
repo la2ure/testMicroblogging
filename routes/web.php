@@ -17,6 +17,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'homepage']);
+Route::resource('post', 'App\Http\Controllers\PostController');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
