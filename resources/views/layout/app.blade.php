@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title')</title>
 
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css' />
+  <link rel='stylesheet' href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" />
 </head>
 
 <body>
-  <div class="container">
+  <div class="container mx-auto">
     <div class="row my-2">
       <div class="col-lg-12 d-flex justify-content-between align-items-center mx-auto">
         <div>
@@ -28,7 +28,7 @@
     @yield('content')
 
   </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js'></script>
+  <script src='https://cdn.tailwindcss.com'></script>
 </body>
 
 </html>
