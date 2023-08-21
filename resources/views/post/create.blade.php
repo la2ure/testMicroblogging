@@ -1,32 +1,34 @@
 @extends('layout.app')
 @section('title', 'Add New Post')
 @section('heading', 'Create a New Post')
-@section('link_text', 'Goto All Posts')
+@section('link_text', 'Go To All Posts')
 @section('link', '/post')
 
 @section('content')
 
 <div class="h-screen flex items-center justify-center">
-  <div class="col-lg-8 mx-auto border-2 border-gray-800 px-9 py-9 rounded-lg">
+  <div class="col-lg-8 mx-auto border border-gray-400 px-9 py-9 rounded-lg w-full">
     <div class="mx-auto max-w-md">
       <div class="card-header bg-primary">
-        <h3 class="text-lg font-bold	 text-center">Add New Post</h3>
+        <h3 class="text-lg font-bold text-center">Add New Post</h3>
       </div>
-      <div class="card-body p-4">
+      <div class="card-body">
         <form action="/post" method="POST" enctype="multipart/form-data">
           @csrf
   
-
           <div class="my-5">
-            <input type="text" name="tag" id="tag" class="form-control @error('tag') is-invalid @enderror" placeholder="Tag" value="{{ old('tag') }}">
+            <label class="block text-gray-700 text-base font-bold mb-2">
+              Tags
+            </label>
+            <input type="text" name="tag" id="tag" class="form-control @error('tag') is-invalid @enderror appearance-none block w-full bg-transparent text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" placeholder="#Tag" value="{{ old('tag') }}">
             @error('tag')
               <div class="invalid-feedback">{{ $message }}</div>
             @enderror
           </div>
 
           <div class="my-5">
-            <p class="mb-1 block text-sm font-medium text-gray-700">Select your file</p>
-            <input type="file" name="file" id="file" accept="image/*" class="mt-2 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-teal-500 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-teal-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60 form-control @error('file') is-invalid @enderror">
+            <p class="mb-1 block text-base font-bold text-gray-700">Select your file</p>
+            <input type="file" name="file" id="file" accept="image/*" class=" appearance-none block w-full bg-transparent text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-2 text-sm file:mr-4 file:rounded-md file:border-0 file:bg-teal-500 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-teal-700 disabled:pointer-events-none disabled:opacity-60 form-control @error('file') is-invalid @enderror">
             @error('file')
               <div class="invalid-feedback">{{ $message }}</div>
             @enderror
