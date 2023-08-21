@@ -28,7 +28,7 @@
 
           <div class="my-5">
             <p class="mb-1 block text-base font-bold text-gray-700">Select your file</p>
-            <input type="file" name="file" id="file" accept="image/*" class=" appearance-none block w-full bg-transparent text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-2 text-sm file:mr-4 file:rounded-md file:border-0 file:bg-teal-500 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-teal-700 disabled:pointer-events-none disabled:opacity-60 form-control @error('file') is-invalid @enderror">
+            <input type="file" name="file" id="file" accept="image/*" class="appearance-none block w-full bg-transparent text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-2 text-sm file:mr-4 file:rounded-md file:border-0 file:bg-teal-500 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-teal-700 disabled:pointer-events-none disabled:opacity-60 form-control @error('file') is-invalid @enderror">
             @error('file')
               <div class="invalid-feedback">{{ $message }}</div>
             @enderror
