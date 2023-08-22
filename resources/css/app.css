@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.backr-color-icon {
+  background-color: #ffab00;
+}
+
+.border-icon {
+  border-radius: 50%;
+}
+
+.background-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../public/images/backgroundImage.jpeg);
+  filter: blur(10px);
+  z-index: -1;
+}
