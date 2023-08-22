@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,24 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Affichage du formulaire de réinitialisation du mot de passe
-Route::get('/forgot-password', [App\Http\Controllers\Auth\PasswordResetLinkController::class, 'create'])->name('password.create');
+Route::get('/', [HomeController::class, 'homepage']);
+Route::resource('post', 'App\Http\Controllers\PostController');
 
-// Traitement de la demande de réinitialisation du mot de passe
-Route::post('/forgot-password', [App\Http\Controllers\Auth\PasswordResetLinkController::class, 'store'])->name('password.store');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/blog', function () {
-    return 'welcome';
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
